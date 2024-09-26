@@ -1,20 +1,32 @@
-import Building from './5-building';
-
-export default class SkyHighBuilding extends Building {
-  constructor(sqft, floors) {
-    super(sqft);
-    this.floors = floors;
+export default class HolbertonClass {
+  constructor(size, location) {
+    this.size = size;
+    this.location = location;
   }
 
-  get floors() {
-    return this._floors;
+  get size() {
+    return this._size;
   }
 
-  set floors(value) {
-    this._floors = value;
+  set size(value) {
+    this._size = value;
   }
 
-  evacuationWarningMessage() {
-    return `Evacuate slowly the ${this.floors} floors`;
+  get location() {
+    return this._location;
+  }
+
+  set location(value) {
+    this._location = value;
+  }
+
+  [Symbol.toPrimitive](hint) {
+    if (hint === 'number') {
+      return this.size;
+    }
+    if (hint === 'string') {
+      return this.location;
+    }
+    return this;
   }
 }

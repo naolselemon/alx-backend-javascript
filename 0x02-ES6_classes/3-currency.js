@@ -5,9 +5,8 @@ class Currency {
   }
 
   /**
-     * @param {String} code
-     */
-
+   * @param {String} code
+   */
   set code(code) {
     if (typeof code !== 'string') {
       throw new TypeError('Code must be a String');
@@ -20,9 +19,8 @@ class Currency {
   }
 
   /**
-     * @param {String} name
-     */
-
+   * @param {String} name
+   */
   set name(name) {
     if (typeof name !== 'string') {
       throw new TypeError('Name must be a String');

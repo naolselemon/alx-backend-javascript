@@ -35,23 +35,18 @@ describe('API integration test', () => {
   });
 
   it('POST /login returns valid response', (done) => {
-    request.post(
-      `${API_URL}/login`,
-      { json: { userName: 'Pinkbrook' } },
-      (_err, res, body) => {
-        expect(res.statusCode).to.be.equal(200);
-        expect(body).to.be.equal('Welcome Pinkbrook');
-        done();
-      }
-    );
+    request.post(`${API_URL}/login`, {json: {userName: 'Pinkbrook'}}, (_err, res, body) => {
+      expect(res.statusCode).to.be.equal(200);
+      expect(body).to.be.equal('Welcome Pinkbrook');
+      done();
+    });
   });
 
   it('GET /available_payments returns valid response', (done) => {
     request.get(`${API_URL}/available_payments`, (_err, res, body) => {
       expect(res.statusCode).to.be.equal(200);
-      expect(JSON.parse(body)).to.be.deep.equal({
-        payment_methods: { credit_cards: true, paypal: false },
-      });
+      expect(JSON.parse(body))
+        .to.be.deep.equal({payment_methods: {credit_cards: true, paypal: false}});
       done();
     });
   });
